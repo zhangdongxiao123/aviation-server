@@ -1,0 +1,13 @@
+version: '3'
+services:
+  api-phone:
+    restart: always
+    image: registry.cn-beijing.aliyuncs.com/guanweiming/accident-server:1.0
+    ports:
+      - "8889:8889/tcp"
+    environment:
+      - db_host=cdb-boq0qdam.bj.tencentcdb.com
+      - db_port=10127
+      - db_name=airtext
+      - db_username=root
+      - db_password=12345678Aa
