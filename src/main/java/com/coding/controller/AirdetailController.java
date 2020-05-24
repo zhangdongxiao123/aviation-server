@@ -72,6 +72,14 @@ public class AirdetailController {
     @ApiOperation("更新事故详情")
     @PostMapping("update")
     public Result<String> updateAirdetail(Airdetail param) {
+        String airtype=param.getAirtype();
+        String airwhy=param.getAirwhy();
+        if(!checkTypeExist(airtype)){
+            return Result.createByErrorMessage("事故类型不存在");
+        }
+        if(!checkReasonExist(airwhy)){
+            return Result.createByErrorMessage("事故原因不存在");
+        }
         airdetailMapper.updateByPrimaryKeySelective(param);
         return Result.createBySuccess();
     }
